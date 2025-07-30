@@ -32,8 +32,6 @@ const NavBar = () => {
     { name: "Home", href: "/" },
     { name: "All Meals", href: "/AllMeals" },
     { name: "AddMeal", href: "/AddMeal" },
-    { name: "My Orders", href: "/orders" },
-     { name: "Post", href: "/Post" },
   ];
 
   const toggleMenu = () => {
