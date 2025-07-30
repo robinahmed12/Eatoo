@@ -4,6 +4,7 @@ import useAxios from "@/hooks/useAxios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const AllMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -180,7 +181,8 @@ const AllMeals = () => {
                       </span>
                     </div>
 
-                    <button
+                    <Link
+                    href={`/AllMeals/${meal._id}`}
                       className="px-6 py-2 rounded-full text-white font-semibold text-sm hover:shadow-lg transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-opacity-50"
                       style={{
                         backgroundColor: "#E63946",
@@ -188,7 +190,7 @@ const AllMeals = () => {
                       }}
                     >
                       Details
-                    </button>
+                    </Link>
                   </div>
 
                   {/* Availability Indicator */}
