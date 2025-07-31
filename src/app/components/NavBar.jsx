@@ -1,8 +1,7 @@
 "use client";
-
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import UserInfo from "./UserInfo";
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -92,15 +91,7 @@ const NavBar = () => {
             {/* CTA Button & Mobile Menu Button */}
             <div className="flex items-center space-x-4">
               {/* CTA Button */}
-              <Link
-                href="/login" // ✅ Add the href here
-                className="hidden sm:inline-flex items-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                style={{ backgroundColor: "#E63946" }}
-                data-aos="fade-left"
-                data-aos-delay="300"
-              >
-                Login
-              </Link>
+              <UserInfo/>
 
               {/* Mobile menu button */}
               <button

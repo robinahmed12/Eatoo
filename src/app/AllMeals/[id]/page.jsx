@@ -1,37 +1,15 @@
-"use client";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import dbConnect from "@/lib/dbConnect";
+import { ObjectId } from "mongodb";
+import Link from "next/link";
 
-export default function MealDetails({ params }) {
+export default async function MealDetails({ params }) {
   const { id } = params;
+  const mealsCollection = await dbConnect("meals");
 
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+  const meal = await mealsCollection.findOne({ _id: new ObjectId(id) });
+  console.log(meal);
 
-  // Mock data for demonstration - replace with your actual database call
-  const meal = {
-    name: "Chicken Biryani",
-    description:
-      "Authentic Hyderabadi style biryani with basmati rice and chicken",
-    price: 299,
-    category: "Lunch",
-    type: "Non-Veg",
-    image:
-      "https://images.unsplash.com/photo-1701579231305-d84d8af9a3fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    availableQuantity: 20,
-    isFeatured: true,
-    preparationTime: 30,
-    status: "active",
-    tags: ["spicy", "chef special"],
-    nutrition: "600 kcal",
-  };
 
   if (!meal) {
     return (
@@ -49,17 +27,12 @@ export default function MealDetails({ params }) {
     );
   }
 
-  const handleOrder = () => {
-    // Add your order logic here
-    console.log("Ordering meal:", meal.name);
-    alert("Order functionality will be implemented!");
-  };
-
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#EDF6F9" }}>
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Back Button */}
-        <button
+        <Link
+        href={"/AllMeals"}
           className="mb-6 flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:shadow-md"
           style={{ backgroundColor: "white", color: "#1D3557" }}
           data-aos="fade-right"
@@ -78,7 +51,7 @@ export default function MealDetails({ params }) {
             />
           </svg>
           Back to Menu
-        </button>
+        </Link>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Image Section */}
@@ -140,10 +113,10 @@ export default function MealDetails({ params }) {
             {/* Price */}
             <div className="flex items-center gap-4">
               <span className="text-4xl font-bold" style={{ color: "#E63946" }}>
-                ৳{meal.price}
+                ${meal.price}
               </span>
               <span className="text-gray-500 line-through text-xl">
-                ৳{Math.round(meal.price * 1.2)}
+                ${Math.round(meal.price * 1.2)}
               </span>
             </div>
 
@@ -296,13 +269,13 @@ export default function MealDetails({ params }) {
                     className="font-bold text-lg"
                     style={{ color: "#E63946" }}
                   >
-                    ৳{meal.price}
+                    ${meal.price}
                   </span>
                 </div>
               </div>
 
               <button
-                onClick={handleOrder}
+               
                 className="w-full py-4 px-6 rounded-xl text-white font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                 style={{ backgroundColor: "#E63946" }}
                 disabled={meal.availableQuantity === 0}
