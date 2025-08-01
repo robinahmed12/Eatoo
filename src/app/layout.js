@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Eatoo | Home",
    icons: {
-    icon: "./",
+    icon: "fav icon",
   },
 };
 
