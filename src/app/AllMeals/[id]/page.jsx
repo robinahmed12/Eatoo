@@ -3,12 +3,20 @@ import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Meal Details",
+   icons: {
+    icon: "/icon_eatto.png",
+  },
+};
+
 export default async function MealDetails({ params }) {
   const { id } = params;
   const mealsCollection = await dbConnect("meals");
 
   const meal = await mealsCollection.findOne({ _id: new ObjectId(id) });
   console.log(meal);
+
 
   if (!meal) {
     return (

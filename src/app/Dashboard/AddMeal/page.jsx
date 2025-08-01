@@ -22,6 +22,7 @@ const AddMeal = () => {
       easing: "ease-in-out",
       once: true,
     });
+    document.title = "Add-Meal"
   }, []);
 
   const onSubmit = async (data) => {

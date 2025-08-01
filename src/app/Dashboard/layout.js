@@ -1,5 +1,10 @@
 import DashboardSidebar from "../components/DashboardSidebar";
-
+export const metadata = {
+  title: "Eatoo | Dashboard",
+   icons: {
+    icon: "/icon_eatto.png",
+  },
+};
 export default function DashboardLayout({ children }) {
   return (
     <div className="flex min-h-screen">

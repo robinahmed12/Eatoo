@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import UserInfo from "./UserInfo";
+import { useSession } from "next-auth/react";
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     // Initialize AOS
@@ -28,10 +30,11 @@ const NavBar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "All Meals", href: "/AllMeals" },
-    { name: "Dashboard", href: "/Dashboard" },
-  ];
+  { name: "Home", href: "/" },
+  { name: "All Meals", href: "/AllMeals" },
+  ...(session?.user ? [{ name: "Dashboard", href: "/Dashboard" }] : []),
+];
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

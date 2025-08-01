@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import AOS from "aos"
 import "aos/dist/aos.css" // Import AOS CSS
 import Link from "next/link"
+import Swal from "sweetalert2"
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ name: "", email: "", password: "" })
@@ -25,8 +26,8 @@ export default function RegisterPage() {
       headers: { "Content-Type": "application/json" },
     })
     if (res.ok) {
-      alert("Registered successfully")
-      router.push("/login")
+      Swal.fire("Registered successfully")
+      router.push("/")
     } else {
       alert("Registration failed")
     }

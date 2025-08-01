@@ -5,6 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Link from "next/link";
+
 const AllMeals = () => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ const AllMeals = () => {
       offset: 100,
     });
 
+
     const fetchMeals = async () => {
       try {
         const res = await axiosInstance.get("/api/items");
@@ -31,6 +33,7 @@ const AllMeals = () => {
     };
 
     fetchMeals();
+     document.title = "All Meals";
   }, []);
 
   if (loading) {
@@ -53,9 +56,11 @@ const AllMeals = () => {
   }
 
   return (
-    
+    <>
+      
       <div className="min-h-screen" style={{ backgroundColor: "#EDF6F9" }}>
         {/* Hero Section */}
+       
         <div className="relative py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <h1
@@ -240,7 +245,7 @@ const AllMeals = () => {
           </div>
         )}
       </div>
-    
+    </>
   );
 };
 
