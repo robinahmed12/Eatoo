@@ -103,7 +103,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer style={{ backgroundColor: "#1D3557" }} className="text-white">
+    <footer style={{ backgroundColor: "#1D3557" }} className="text-white ">
       {/* Main Footer Content */}
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

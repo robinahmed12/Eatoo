@@ -15,7 +15,7 @@ const Banner = () => {
 
   return (
     <div
-      className="min-h-screen pt-10 flex items-center justify-center px-4 sm:px-6 lg:px-8"
+      className="min-h-screen  pt-10 flex items-center justify-center px-4 sm:px-6 lg:px-8"
       style={{ backgroundColor: "#EDF6F9" }}
     >
       <div className="max-w-7xl mx-auto">

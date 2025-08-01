@@ -3,7 +3,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import NextSessionProvide from "@/provider/NextSessionProvide";
-
+import AppLayout from "./components/AppLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,31 +15,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Eatoo | Home",
-   icons: {
-    icon: "/icon_eatto.png",
-  },
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-        
       <NextSessionProvide>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <header>
-            <nav className="max-w-7xl mx-auto">
-              <NavBar />
-            </nav>
-          </header>
-
-          <main>{children}</main>
-          <footer>
-            <Footer />
-          </footer>
+          <AppLayout>{children}</AppLayout>
         </body>
       </NextSessionProvide>
     </html>
