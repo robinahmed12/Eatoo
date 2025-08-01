@@ -16,6 +16,7 @@ export default function RegisterPage() {
       duration: 800,
       once: true, // Only animate once
     })
+    document.title = "Register"
   }, [])
 
   const handleSubmit = async (e) => {
