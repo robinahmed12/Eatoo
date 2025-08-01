@@ -11,10 +11,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  useEffect(()=> {
-    document.title = "Login"
-  })
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await signIn("credentials", {
@@ -29,6 +25,10 @@ export default function LoginPage() {
       alert("Login failed");
     }
   };
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EDF6F9] p-4 sm:p-6 lg:p-8">
