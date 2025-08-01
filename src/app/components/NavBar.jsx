@@ -98,12 +98,13 @@ const NavBar = () => {
           {session?.user &&  <UserInfo />}
 
           {!session?.user && (
-            <button
+            <Link 
+            href={"/login"}
               className="w-full bg-red-600 text-white font-semibold py-2 rounded hover:bg-red-700"
               onClick={() => setDrawerOpen(false)}
             >
               Login
-            </button>
+            </Link>
           )}
         </div>
       </div>
