@@ -3,7 +3,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import NextSessionProvide from "@/provider/NextSessionProvide";
-import Head from "next/head";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-        <Head>
-        <link rel="icon" href="/icon_eatto.png" />
-      </Head>
+        
       <NextSessionProvide>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
