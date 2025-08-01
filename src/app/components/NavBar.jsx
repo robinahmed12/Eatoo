@@ -30,7 +30,7 @@ const NavBar = () => {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "All Meals", href: "/AllMeals" },
-    { name: "AddMeal", href: "/AddMeal" },
+    { name: "Dashboard", href: "/Dashboard" },
   ];
 
   const toggleMenu = () => {
@@ -91,7 +91,7 @@ const NavBar = () => {
             {/* CTA Button & Mobile Menu Button */}
             <div className="flex items-center space-x-4">
               {/* CTA Button */}
-              <UserInfo/>
+              <UserInfo />
 
               {/* Mobile menu button */}
               <button
