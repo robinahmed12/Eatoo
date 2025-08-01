@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🍽️ Eatoo – Meal Ordering Web Application
 
-## Getting Started
+**Eatoo** is a full-stack meal ordering web application built with the MERN stack (MongoDB, Express.js, Node.js, Next.js). It allows users to browse meals, place orders, and manage their profile, while providing admins with powerful tools to manage meals, track orders, and monitor system activity.
 
-First, run the development server:
+## 🚀 Live Website
+
+🔗 [https://eatoo-ten.vercel.app/](https://eatoo-ten.vercel.app/)
+
+## 📂 GitHub Repository
+
+🔗 [https://github.com/robinahmed12/Eatoo](https://github.com/robinahmed12/Eatoo)
+
+---
+
+## ✨ Features
+
+### ✅ User Features:
+- Browse meals with images and descriptions
+- View meal details with nutritional info
+- Secure login and registration
+- Role-based protected routes
+- Order meals and view history (upcoming)
+- User profile and dashboard
+
+### 🧑‍💼 Admin Features:
+- Create, edit, and delete meals
+- Manage all orders (upcoming)
+- Monitor analytics and feedback (upcoming)
+- Role-based dashboard with restricted access
+
+### 🔐 Authentication:
+- NextAuth.js (Credential Provider)
+- JWT for protected routes
+- Role-based access control
+
+---
+
+## 📦 Tech Stack
+
+| Tech             | Description                                |
+|------------------|--------------------------------------------|
+| **Next.js**      | Full-stack React Framework                 |
+| **React**        | Frontend UI Library                        |
+| **Tailwind CSS** | Styling and responsive layout              |
+| **MongoDB**      | NoSQL Database (MongoDB Atlas)            |
+| **Express.js**   | Backend Framework                          |
+| **Node.js**      | JavaScript Runtime                         |
+| **NextAuth.js**  | Authentication                             |
+| **JWT**          | Secure API authentication                  |
+| **Cloudinary**   | Image uploads                              |
+| **Stripe**       | Payment integration (planned)              |
+| **SSLCommerz**   | Payment gateway for Bangladesh (planned)   |
+
+---
+
+## 📌 Planned Features
+
+- 🧾 Order tracking system  
+- 💳 SSLCommerz & Stripe payment support  
+- 📈 Admin analytics dashboard  
+- 📬 Email notifications (e.g., order confirmation)  
+- 🛡️ Backend validation and security hardening  
+
+---
+
+## ⚙️ Installation & Development
 
 ```bash
+# Clone the repo
+git clone https://github.com/robinahmed12/Eatoo.git
+cd Eatoo
+
+# Install dependencies
+npm install
+
+# Create your .env.local file and add your credentials
+cp .env.example .env.local
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔐 Environment Variables
+Add the following to your .env.local file:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+env
+Copy
+Edit
+MONGODB_URI=your_mongodb_uri
+NEXTAUTH_SECRET=your_auth_secret
+NEXTAUTH_URL=http://localhost:3000
+🤝 Contributing
+Feel free to fork this repo, suggest new features, report bugs, or open pull requests. All contributions are welcome!
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📄 License
+This project is open source and available under the MIT License.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🙌 Acknowledgements
+Thanks to the amazing open-source community and tools like:
 
-## Learn More
+Vercel
 
-To learn more about Next.js, take a look at the following resources:
+MongoDB Atlas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js
 
-## Deploy on Vercel
+Cloudinary
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Made with ❤️ by @robinahmed12
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you'd like me to include screenshots or a usage walkthrough section too!
