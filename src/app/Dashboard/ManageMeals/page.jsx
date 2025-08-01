@@ -9,7 +9,11 @@ import Swal from "sweetalert2";
 
 const ManageMeals = () => {
   const [meals, setMeals] = useState([]);
+  console.log(meals);
+
   const [loading, setLoading] = useState(true);
+  const [editingMeal, setEditingMeal] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const axiosInstance = useAxios();
 
   useEffect(() => {
@@ -60,10 +64,57 @@ const ManageMeals = () => {
   };
 
   const handleEdit = (id) => {
-    // Placeholder for edit logic
-    console.log("Edit meal with ID:", id);
-    // In a real application, you would navigate to an edit page or open a modal
-    alert(`Edit functionality for meal ID: ${id} is not implemented.`);
+    const mealToEdit = meals.find((meal) => meal._id === id);
+    setEditingMeal(mealToEdit); // meal object with _id and fields
+    setShowModal(true); // opens modal
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(`/api/items/${editingMeal._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editingMeal),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        // ✅ Update the meal in local state
+        const updatedMeals = meals.map((meal) =>
+          meal._id === editingMeal._id ? { ...meal, ...editingMeal } : meal
+        );
+        setMeals(updatedMeals);
+
+        // ✅ Show success alert
+        Swal.fire({
+          icon: "success",
+          title: "Updated!",
+          text: "Meal updated successfully.",
+          confirmButtonColor: "#52B788",
+        });
+
+        setShowModal(false);
+        setEditingMeal(null);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Update failed",
+          text: result.message || "Something went wrong.",
+          confirmButtonColor: "#E63946",
+        });
+      }
+    } catch (error) {
+      console.error("Update error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Something went wrong while updating.",
+        confirmButtonColor: "#E63946",
+      });
+    }
   };
 
   if (loading) {
@@ -232,6 +283,56 @@ const ManageMeals = () => {
             ))}
           </tbody>
         </table>
+
+        {showModal && editingMeal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg w-full max-w-md space-y-4">
+              <h2 className="text-xl font-bold mb-4">Edit Meal</h2>
+              <form onSubmit={(e) => handleUpdate(e)} className="space-y-3">
+                <input
+                  type="text"
+                  value={editingMeal.name}
+                  onChange={(e) =>
+                    setEditingMeal({ ...editingMeal, name: e.target.value })
+                  }
+                  placeholder="Meal Name"
+                  className="w-full border px-3 py-2 rounded"
+                />
+
+                <input
+                  type="number"
+                  value={editingMeal.price}
+                  onChange={(e) =>
+                    setEditingMeal({
+                      ...editingMeal,
+                      price: parseFloat(e.target.value),
+                    })
+                  }
+                  placeholder="Price"
+                  className="w-full border px-3 py-2 rounded"
+                />
+
+                {/* Add more fields like category, status, quantity, etc. as needed */}
+
+                <div className="flex justify-between">
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
