@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import Link from "next/link"
 
 const Banner = () => {
   useEffect(() => {
@@ -55,6 +56,8 @@ const Banner = () => {
               >
                 Order Now
               </button>
+              <Link href={"/AllMeals"}>
+              
               <button
                 className="px-8 py-4 rounded-full font-semibold text-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg transform"
                 style={{
@@ -65,6 +68,7 @@ const Banner = () => {
               >
                 View Menu
               </button>
+              </Link>
             </div>
 
             {/* Stats */}

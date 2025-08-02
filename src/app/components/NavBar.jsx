@@ -11,6 +11,9 @@ const NavBar = () => {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "All Meals", href: "/AllMeals" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
+    { name: "Testimonial", href: "/feedback" },
     ...(session?.user ? [{ name: "Dashboard", href: "/Dashboard" }] : []),
   ];
 
@@ -39,7 +42,7 @@ const NavBar = () => {
             </div>
 
             <div className="hidden lg:inline md:inline">
-              {session?.user && <UserInfo />}
+               <UserInfo />
             </div>
 
             {/* Mobile Hamburger */}
@@ -95,17 +98,11 @@ const NavBar = () => {
             </Link>
           ))}
 
-          {session?.user &&  <UserInfo />}
+          <div>
+            <UserInfo/>
+          </div>
 
-          {!session?.user && (
-            <Link 
-            href={"/login"}
-              className="w-full bg-red-600 text-white font-semibold py-2 rounded hover:bg-red-700"
-              onClick={() => setDrawerOpen(false)}
-            >
-              Login
-            </Link>
-          )}
+          
         </div>
       </div>
 
